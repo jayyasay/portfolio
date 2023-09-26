@@ -3,12 +3,14 @@ import GlobalStyle from "../components/GlobalStyle";
 import philippineFlag from "../assets/phi.png";
 import uaeFlag from "../assets/uae.png";
 
-const HomeWrapper = styled.div`
-  @media screen and (min-width: 768px) {
-    max-width: 1024px;
-    margin: auto;
-  }
+const ExperienceMainWrapper = styled.div`
+@media screen and (min-width: 768px) {
+  max-width: 1024px;
+  margin: auto;
+}
 `;
+
+const ExperienceWrapper = styled.div``;
 
 const CountryWrapper = styled.div`
   @media screen and (min-width: 768px) {
@@ -35,7 +37,6 @@ const FlexWrapper = styled.div`
   }
 `;
 
-const ExperienceWrapper = styled.div``;
 
 const Date = styled.p`
   padding: 0;
@@ -46,10 +47,10 @@ const Flags = styled.img`
   height: 20px;
 `
 
-const Home = () => {
+const Experience = () => {
   return (
     <>
-      <HomeWrapper id="experiences">
+      <ExperienceMainWrapper id="experiences">
         <GlobalStyle />
         <h2>Experiences</h2>
         <FlexWrapper>
@@ -98,9 +99,9 @@ const Home = () => {
             <p>Got questions? Shoot me an email.</p>
           </ExperienceWrapper>
         </FlexWrapper>
-      </HomeWrapper>
+      </ExperienceMainWrapper>
     </>
   );
 };
 
-export default Home;
+export default Experience;

@@ -1,5 +1,7 @@
+import React from "react";
 import styled from "styled-components";
 import jay from "../assets/jay.jpg";
+import GlobalStyle from "../components/GlobalStyle";
 
 const AboutWrapper = styled.div`
   @media screen and (min-width: 768px) {
@@ -30,10 +32,10 @@ const InnerWrapper = styled.div`
 
 const TextWrapper = styled.div``;
 
-const Home = () => {
-  return (
-    <>
-      <AboutWrapper>
+const About = React.forwardRef((props, ref) => {
+    return (
+      <AboutWrapper ref={ref} id="about">
+        <GlobalStyle />
         <h2>Kamusta?</h2>
         <InnerWrapper>
           <MyPhoto src={jay} alt="Jay" />
@@ -56,8 +58,7 @@ const Home = () => {
           </TextWrapper>
         </InnerWrapper>
       </AboutWrapper>
-    </>
   );
-};
+});
 
-export default Home;
+export default About;

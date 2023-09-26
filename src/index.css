@@ -28,15 +28,28 @@ h1, h2, h3, h4, h5, h6, p {
 
 h2 {
   font-size: 2rem;
-  margin: 50px 0;
 }
 
 p,a  {
   font-size: 1rem;
 }
 
+.remove-margin p:first-child {
+  margin: 0;
+}
+
+.remove-margin p:not(:first-child) {
+  margin-top: 20px;
+}
+
 #root {
   padding: 0 20px;
+}
+
+#root .active {
+  color: #000;
+  background-color: #ddd;
+  transition: background-color 0.3s ease-in-out;
 }
 
 @media screen and (min-width: 768px) {
