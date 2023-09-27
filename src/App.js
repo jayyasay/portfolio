@@ -17,6 +17,14 @@ function App() {
       <Main>
         <About />
         <Experience />
+        <About />
+        <Experience />
+        <About />
+        <Experience />
+        <About />
+        <Experience />
+        <About />
+        <Experience />
       </Main>
 
       {/* Add other sections here */}
