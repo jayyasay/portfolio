@@ -3,6 +3,7 @@ import Navigation from "./components/Navigation";
 import Experience from "./pages/Experience";
 import About from "./pages/About";
 import styled from "styled-components";
+import { Analytics } from "@vercel/analytics/react";
 
 const Main = styled.main`
   position: relative;
@@ -13,7 +14,7 @@ const Main = styled.main`
 function App() {
   return (
     <>
-      <Navigation/>
+      <Navigation />
       <Main>
         <About />
         <Experience />
@@ -26,7 +27,7 @@ function App() {
         <About />
         <Experience />
       </Main>
-
+      <Analytics />
       {/* Add other sections here */}
     </>
   );
