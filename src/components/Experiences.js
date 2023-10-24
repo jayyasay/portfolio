@@ -7,20 +7,36 @@ const FlexWrapper = styled.div`
   flex-direction: column;
 
   @media screen and (min-width: 768px) {
-    flex-direction: row;
-    gap: 50px;
+    flex-direction: column;
+    width: 70%;
+    &:first-child {
+      width: 30%;
+    }
   }
 `;
 
+const InnerWrapper = styled.div`
+  width; 100%;
+`;
+
 const ExperienceWrapper = styled.div`
+  transition: all 0.3s ease-in-out;
   @media screen and (min-width: 768px) {
-    width: 70%;
+    width: 100%;
+    padding: 10px;
+  }
+  &:hover {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out;
   }
 `;
 
 const CountryWrapper = styled.div`
   @media screen and (min-width: 768px) {
-    width: 30%;
+    display: flex;
+    width: 100%;
+    gap: 30px;
   }
 `;
 
@@ -41,11 +57,11 @@ const Date = styled.p`
 const Company = styled.h4`
   margin: 0;
   font-size: 1.2rem;
-`
+`;
 
 const Position = styled.p`
-margin: 0 !important;
-`
+  margin: 0 !important;
+`;
 
 const Flags = styled.img`
   height: 20px;
@@ -57,43 +73,47 @@ const Ul = styled.ul`
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
-`
+`;
 
 const Skill = styled.li`
-    list-style: none;
-    color: #fff;
-    border: 1px solid #ddd;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 12px;
-`
+  list-style: none;
+  color: #fff;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+`;
 
 const Experiences = () => {
   const myExperiences = [
     {
       country: "United Arab Emirates",
-      company: "Holiday Factory",
-      position: "Frontend Developer",
-      duration: "May 2021 - Present",
-      flagSrc: uaeFlag,
       flagAlt: "Dubai Flag",
+      flagSrc: uaeFlag,
       date: "2021 - Present",
-      experience: [
-        "Managing and maintaining frontend of Holiday Factory's website, converting PSD/Figma designs to a mobile-responsive platform. Led the implementation of new products, <a href='https://holidayfactorypremium.com/' class='test'>Holiday Factory Premium</a> and Holiday Factory Georgia websites from scratch. Successfully launched bank campaigns, public holiday promotions, and online voucher purchasing pages.",
-      ],
-      technology: [
-        "HTML",
-        "CSS",
-        "Grid",
-        "Flexbox",
-        "JavaScript",
-        "React",
-        "Fetch API",
-        "jQuery",
-        "Git / Github",
-        "Jira",
-        "Figma",
-        "Photoshop",
+      experiences: [
+        {
+          company: "Holiday Factory",
+          position: "Frontend Developer",
+          duration: "May 2021 - Present",
+          experience: [
+            "Managing and maintaining frontend of <a href='https://www.holiday-factory.com/' class='test' target='_blank'>Holiday Factory's website</a>, converting PSD/Figma designs to a mobile-responsive platform. Led the implementation of new products, <a href='https://holidayfactorypremium.com/' class='test' target='_blank'>Holiday Factory Premium</a> and <a href='https://holidayfactory.ge/book/home?lang=en' class='test' target='_blank'>Holiday Factory Georgia</a> websites from scratch. Successfully launched bank campaigns, public holiday promotions, and online voucher purchasing pages.",
+          ],
+          technology: [
+            "HTML",
+            "CSS",
+            "Grid",
+            "Flexbox",
+            "JavaScript",
+            "React",
+            "Fetch API",
+            "jQuery",
+            "Git / Github",
+            "Jira",
+            "Figma",
+            "Photoshop",
+          ],
+        },
       ],
     },
     {
@@ -101,41 +121,79 @@ const Experiences = () => {
       flagSrc: philippineFlag,
       flagAlt: "Philippines Flag",
       date: "2010 - 2021",
-      experience: [
-        "Recruited as Web Developer (2014) and got promoted to Intermediate Web Developer (2017) and had the opportunity to lead a team. Responsible for developing and maintaining websites, product launches, E-commerce solutions, and leading a group of Developers in Manila.  Established good stakeholder relationships by implementing what the business needs.",
-      ],
-      technology: [
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Contentful"
+      experiences: [
+        {
+          company: "TELUS International Philippines",
+          position: "Team Leader/Intermediate Web Developer",
+          experience: [
+            "Recruited as Web Developer (2014) and got promoted to Intermediate Web Developer (2017) and had the opportunity to lead a team. Responsible for developing and maintaining websites, product launches, E-commerce solutions, and leading a group of Developers in Manila.  Established good stakeholder relationships by implementing what the business needs.",
+          ],
+          technology: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Contentful",
+            "Ruby on Rails",
+            "Git / Github",
+            "Jira",
+          ],
+        },
+        {
+          company: "HSBC Electronic Data Processing Philippines",
+          position: "Web Production Officer",
+          experience: [
+            "Recruited as Web Associate (2010) and got promoted to Web Production Officer (2013). Responsible for maintaining public and intranet websites. One of the quality champions (ISO certification) that produced documentation and streamlined the department’s processes.",
+          ],
+          technology: [
+            "HTML",
+            "CSS",
+            "Content Management System",
+            "Site in a Box (Internal CMS)",
+            "GCMS (Internal CMS)",
+          ],
+        },
       ],
     },
   ];
   return (
     <>
-      {myExperiences.map((experience, index) => (
-        <FlexWrapper>
+      {myExperiences.map((countryData) => (
+        <div key={countryData.country}>
           <CountryWrapper>
-            <CountryHeader>
-              {experience.country}{" "}
-              <Flags src={experience.flagSrc} alt={experience.flagAlt} />
-            </CountryHeader>
-            <Date>{experience.date}</Date>
-          </CountryWrapper>
-          <ExperienceWrapper className="remove-margin">
-            <Company>{experience.company}</Company>
-            <Position>{experience.position}</Position>
-            {experience.experience.map((experience, index) => (
-              <p key={index} dangerouslySetInnerHTML={{__html: experience}} className="with-link"></p>
-            ))}
-            <Ul>
-              {experience.technology.map((technology) => (
-                <Skill>{technology} </Skill>
+            <FlexWrapper>
+              <CountryHeader>
+                {countryData.country}
+                <Flags src={countryData.flagSrc} alt={countryData.flagAlt} />
+              </CountryHeader>
+              <Date>{countryData.date}</Date>
+            </FlexWrapper>
+            <FlexWrapper>
+              {countryData.experiences.map((experience) => (
+                <InnerWrapper
+                  key={`${experience.company}-${experience.position}-${experience.date}`}
+                >
+                  <Date>{experience.date}</Date>
+                  <ExperienceWrapper className="remove-margin">
+                    <Company>{experience.company}</Company>
+                    <Position>{experience.position}</Position>
+                    {experience.experience.map((detail, detailIndex) => (
+                      <p
+                        key={detailIndex}
+                        dangerouslySetInnerHTML={{ __html: detail }}
+                        className="with-link"
+                      ></p>
+                    ))}
+                    <Ul>
+                      {experience.technology.map((technology, techIndex) => (
+                        <Skill key={techIndex}>{technology}</Skill>
+                      ))}
+                    </Ul>
+                  </ExperienceWrapper>
+                </InnerWrapper>
               ))}
-            </Ul>
-          </ExperienceWrapper>
-        </FlexWrapper>
+            </FlexWrapper>
+          </CountryWrapper>
+        </div>
       ))}
     </>
   );

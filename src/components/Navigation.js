@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
+import { AiOutlineFilePdf } from "react-icons/ai";
 
 const Nav = styled.nav`
   background-color: #23242c;
@@ -90,10 +91,16 @@ const NavItems = styled.div`
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const styleIcons = { marginLeft: "10px" };
+
   const sections = [
     { id: "about", name: "About" },
     { id: "experiences", name: "Experiences" },
-    { id: "mywork", name: "My work" },
+    {
+      id: "cv",
+      name: "Download CV",
+      icon: <AiOutlineFilePdf style={styleIcons} />,
+    },
     { id: "contact", name: "Let's connect" },
   ];
 
@@ -115,7 +122,7 @@ const Navigation = () => {
                 setIsOpen(!isOpen);
               }}
             >
-              {section.name}
+              {section.name} {section.icon && section.icon}
             </StyledLink>
           ))}
         </NavItems>
