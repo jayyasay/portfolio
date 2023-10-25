@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Document, Page } from "react-pdf";
-import paolojaycv from "../assets/paolojayyasay_cv.pdf";
 import "react-pdf/dist/Page/TextLayer.css";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import { HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi";
 import styled from "styled-components";
+
+const myCV = "/paolojayyasay_cv.pdf";
 
 const Flex = styled.div`
   display: flex;
@@ -64,7 +65,7 @@ export default function Test() {
     <>
       <RelativeBlock>
         <Document
-          file={paolojaycv}
+          file={myCV}
           onLoadSuccess={onDocumentLoadSuccess}
           loading="Loading CV..."
           renderMode="canvas"

@@ -2,7 +2,8 @@ import styled from "styled-components";
 import GlobalStyle from "../components/GlobalStyle";
 import SamplePdf from "../components/SamplePdf";
 import { FiDownload } from "react-icons/fi";
-import paolojaycv from "../assets/paolojayyasay_cv.pdf";
+
+const myCV = "/paolojayyasay_cv.pdf";
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -30,7 +31,7 @@ const Download = styled.p`
 
 const downloadPDF = () => {
   const link = document.createElement("a");
-  link.href = paolojaycv;
+  link.href = myCV;
   link.download = "paolojayyasay_cv.pdf";
   link.click();
 };
