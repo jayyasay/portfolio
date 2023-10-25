@@ -60,15 +60,24 @@ p,a  {
   color: #000;
   background-color: #ddd;
   transition: background-color 0.3s ease-in-out;
+  width: 100%;
 }
 
-.pdfSize {
-  width: 612px;
-  height: 792px;
+.pdfSize, .pdfSize div canvas, .pdfSize div .react-pdf__Page__textContent, .react-pdf__Page__annotations {
+  width: 100% !important;
+  height: auto !important;
 }
 
 @media screen and (min-width: 768px) {
   #root {
     padding: 0;
+  }
+  .pdfSize, .pdfSize div canvas, .pdfSize div .react-pdf__Page__textContent, .react-pdf__Page__annotations {
+    width: 612px !important;
+    height: 792px !important;
+    margin: auto;
+  }
+  #root .active {
+    width: unset;
   }
 }

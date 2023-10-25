@@ -5,8 +5,17 @@ import { FiDownload } from "react-icons/fi";
 
 const HeaderWrapper = styled.div`
   display: flex;
-  align-items: center;
-  gap: 20px;
+  flex-direction: column;
+  & * {
+    margin: 0;
+    padding: 0;
+  }
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    margin: 20px 0;
+  }
 `;
 
 const ExperienceMainWrapper = styled.div`

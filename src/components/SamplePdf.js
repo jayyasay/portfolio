@@ -34,8 +34,11 @@ const Pagination = styled.p`
 
 const RelativeBlock = styled.div`
   position: relative;
-  width: 612px;
-  margin: auto;
+  width: 100%;
+//   @media screen and (min-width: 768px) {
+//     width: 612px;
+//     margin: auto;
+//   }
 `;
 
 export default function Test() {
@@ -71,7 +74,7 @@ export default function Test() {
           className="pdfSize"
           style={{ position: "relative" }}
         >
-          <Page pageNumber={pageNumber} width={612} height={792} />
+          <Page pageNumber={pageNumber} />
         </Document>
         <Flex>
           <Button
