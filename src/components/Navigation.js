@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
-import { AiOutlineFilePdf } from "react-icons/ai";
+import {
+  AiOutlineFilePdf,
+  AiFillGithub,
+  AiFillLinkedin,
+  AiFillFacebook,
+  AiOutlineInstagram,
+} from "react-icons/ai";
 
 const Nav = styled.nav`
   background-color: #23242c;
@@ -83,8 +89,68 @@ const NavItems = styled.div`
 
   @media screen and (min-width: 768px) {
     align-items: center;
-    margin-left: auto;
+    margin: auto;
     display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+  }
+`;
+
+const SocialIcons = styled.div`
+  margin-left: auto;
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+`;
+
+const SocialUL = styled.ul`
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 20px;
+  margin: auto;
+  align-items: center;
+
+  & * {
+    color: #fff;
+    font-size: 1.5rem;
+  }
+
+  & li {
+    position: relative;
+  }
+
+  & li a {
+    position: relative;
+    display: flex;
+    transition: all 0.3s ease-in-out;
+  }
+
+  & li a:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Center and hide */
+    z-index: -1;
+    content: "";
+    width: calc(100% + 24px); /* Adjust width as needed */
+    height: calc(100% + 24px); /* Adjust height as needed */
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: transform 0.2s ease-in-out;
+    overflow: visible;
+    border-radius: 50%;
+  }
+
+  & li a:hover:after {
+    transform: translate(-50%, -50%) scale(1); /* Expand to full size */
   }
 `;
 
@@ -101,7 +167,30 @@ const Navigation = () => {
       id: "mycv",
       name: "View my CV",
       icon: <AiOutlineFilePdf style={styleIcons} />,
-    }
+    },
+  ];
+
+  const socialMedia = [
+    {
+      name: "GitHub",
+      url: "https://github.com/jayyasay",
+      icon: <AiFillGithub />,
+    },
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/jayyasay/",
+      icon: <AiFillLinkedin />,
+    },
+    {
+      name: "Facebook",
+      url: "https://www.facebook.com/jayyasay",
+      icon: <AiFillFacebook />,
+    },
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/jayyasay",
+      icon: <AiOutlineInstagram />,
+    },
   ];
 
   return (
@@ -126,6 +215,17 @@ const Navigation = () => {
             </StyledLink>
           ))}
         </NavItems>
+        <SocialIcons>
+          <SocialUL>
+            {socialMedia.map((social) => (
+              <li key={social.name}>
+                <a href={social.url} target="_blank">
+                  {social.icon}
+                </a>
+              </li>
+            ))}
+          </SocialUL>
+        </SocialIcons>
       </Wrapper>
     </Nav>
   );

@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { Analytics } from "@vercel/analytics/react";
 import { pdfjs } from 'react-pdf';
 import workerSrc from 'pdfjs-dist/build/pdf.worker.min.js';
+import PoweredBy from "./components/PoweredBy";
 pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
 
 const Main = styled.main`
@@ -23,6 +24,7 @@ function App() {
         <About />
         <Experience />
         <MyCv />
+        <PoweredBy />
       </Main>
       <Analytics />
       {/* Add other sections here */}
