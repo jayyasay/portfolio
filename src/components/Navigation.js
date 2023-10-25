@@ -96,12 +96,12 @@ const Navigation = () => {
   const sections = [
     { id: "about", name: "About" },
     { id: "experiences", name: "Experiences" },
+    // { id: "contact", name: "Let's connect" },
     {
-      id: "cv",
-      name: "Download CV",
+      id: "mycv",
+      name: "View my CV",
       icon: <AiOutlineFilePdf style={styleIcons} />,
-    },
-    { id: "contact", name: "Let's connect" },
+    }
   ];
 
   return (

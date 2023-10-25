@@ -62,6 +62,11 @@ p,a  {
   transition: background-color 0.3s ease-in-out;
 }
 
+.pdfSize {
+  width: 612px;
+  height: 792px;
+}
+
 @media screen and (min-width: 768px) {
   #root {
     padding: 0;
