@@ -5,8 +5,6 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 import { HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi";
 import styled from "styled-components";
 
-const myCV = "/paolojayyasay_cv.pdf";
-
 const Flex = styled.div`
   display: flex;
   width: fit-content;
@@ -65,7 +63,8 @@ export default function Test() {
     <>
       <RelativeBlock>
         <Document
-          file={myCV}
+          file={`${process.env.PUBLIC_URL}/paolojayyasay_cv.pdf`}
+          //   file={myCV}
           onLoadSuccess={onDocumentLoadSuccess}
           loading="Loading CV..."
           renderMode="canvas"

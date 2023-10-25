@@ -3,8 +3,6 @@ import GlobalStyle from "../components/GlobalStyle";
 import SamplePdf from "../components/SamplePdf";
 import { FiDownload } from "react-icons/fi";
 
-const myCV = "/paolojayyasay_cv.pdf";
-
 const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -31,7 +29,7 @@ const Download = styled.p`
 
 const downloadPDF = () => {
   const link = document.createElement("a");
-  link.href = myCV;
+  link.href = `${process.env.PUBLIC_URL}/paolojayyasay_cv.pdf`;
   link.download = "paolojayyasay_cv.pdf";
   link.click();
 };
