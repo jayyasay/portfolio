@@ -162,7 +162,7 @@ const Navigation = () => {
   const sections = [
     { id: "about", name: "About" },
     { id: "experiences", name: "Experiences" },
-    // { id: "contact", name: "Let's connect" },
+    { id: "portfolio", name: "My Work" },
     {
       id: "mycv",
       name: "View my CV",

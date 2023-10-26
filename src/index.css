@@ -15,6 +15,7 @@ body * {
 h1 {
   font-family: 'Skranji', cursive;
   color: #fff;
+  padding-left: 20px;
 }
 
 code {
@@ -69,6 +70,9 @@ p,a  {
 }
 
 @media screen and (min-width: 768px) {
+  h1 {
+    padding-left: unset;
+  }
   #root {
     padding: 0;
   }

@@ -3,6 +3,14 @@ import styled from "styled-components";
 import jay from "../assets/jay.jpg";
 import GlobalStyle from "../components/GlobalStyle";
 
+const H2 = styled.h2`
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    text-align: left;
+  }
+`
+
 const AboutWrapper = styled.div`
   @media screen and (min-width: 768px) {
     max-width: 1024px;
@@ -23,10 +31,10 @@ const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
-    align-items: center; 
   }
 `;
 
@@ -36,7 +44,7 @@ const About = React.forwardRef((props, ref) => {
     return (
       <AboutWrapper ref={ref} id="about">
         <GlobalStyle />
-        <h2>Kamusta?</h2>
+        <H2>Kamusta?</H2>
         <InnerWrapper>
           <MyPhoto src={jay} alt="Jay" />
           <TextWrapper>
