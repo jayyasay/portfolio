@@ -219,7 +219,7 @@ const Navigation = () => {
           <SocialUL>
             {socialMedia.map((social) => (
               <li key={social.name}>
-                <a href={social.url} target="_blank">
+                <a href={social.url} target="_blank" rel="noreferrer">
                   {social.icon}
                 </a>
               </li>
