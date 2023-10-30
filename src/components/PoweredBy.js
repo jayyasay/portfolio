@@ -19,7 +19,7 @@ const LogoWrapper = styled.div`
   align-items: center;
   text-align: center;
   margin-top: 30px;
-
+  flex-wrap: wrap;
 `;
 
 const Text = styled.p`
