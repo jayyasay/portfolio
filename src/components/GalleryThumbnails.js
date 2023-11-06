@@ -114,7 +114,7 @@ const SwiperWrapper = styled.div`
 
 const Ul = styled.ul`
   padding-left: 20px;
-`
+`;
 
 const Li = styled.li`
   font-size: 12px;
@@ -122,7 +122,7 @@ const Li = styled.li`
   &:not(:last-child) {
     margin-bottom: 10px;
   }
-`
+`;
 
 const Link = styled.a`
   display: flex;
@@ -137,10 +137,12 @@ const Link = styled.a`
   width: fit-content;
 `;
 
-const bulletsForHf = ["Successfully led the development and implementation of Holiday Factory Premium and Holiday Factory Georgia websites, creating code from scratch and ensuring full functionality including the implementation of a multi-language (Arabic and Georgian)",
-"Collaborated with the Marketing team to create webpages for bank campaigns, aligning website content with promotional activities.",
-"Implemented automated price updates by fetching data from the backend, reducing manual update time by 80%.",
-"Worked closely with designers to ensure the mobile-friendliness of the website and collaborated effectively with the backend team to achieve desired results.",]
+const bulletsForHf = [
+  "Successfully led the development and implementation of Holiday Factory Premium and Holiday Factory Georgia websites, creating code from scratch and ensuring full functionality including the implementation of a multi-language (Arabic and Georgian)",
+  "Collaborated with the Marketing team to create webpages for bank campaigns, aligning website content with promotional activities.",
+  "Implemented automated price updates by fetching data from the backend, reducing manual update time by 80%.",
+  "Worked closely with designers to ensure the mobile-friendliness of the website and collaborated effectively with the backend team to achieve desired results.",
+];
 
 const detailedWorkContents = [
   {
@@ -154,7 +156,7 @@ const detailedWorkContents = [
     title: "Holiday Factory",
     text: "Responsible for carrying out the implementation of fresh designs and complex functionalities, along with the integration of automated processes.",
     link: "https://www.holiday-factory.com/",
-    bullets: bulletsForHf
+    bullets: bulletsForHf,
   },
   {
     thumbnailImage: HfPremiumImage,
@@ -167,20 +169,20 @@ const detailedWorkContents = [
     title: "Holiday Factory Premium",
     text: "Effectively spearheaded the development and execution of the Holiday Factory Premium website, constructing the code from the ground up and ensuring its complete functionality, which included the successful incorporation of a multi-language feature, specifically Arabic.",
     link: "https://www.holidayfactorypremium.com/",
-    bullets: bulletsForHf
+    bullets: bulletsForHf,
   },
   {
     thumbnailImage: TelusBusiness,
     imagesForSlider: [],
     title: "TELUS Business",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    text: "Recruited as Web Developer (2014) and got promoted to Intermediate Web Developer (2017) and had the opportunity to lead a team. Responsible for developing and maintaining websites, product launches, E-commerce solutions, and leading a group of Developers in Manila. Established good stakeholder relationships by implementing what the business needs.",
     link: "https://www.telus.com/en/business/small",
     bullets: [
       "Launched countless devices on business segment including product page development, and creating plans that company has to offer",
       "Completed complex web content projects with a cross-functional team. Ensured all product pages are responsive on all device mediums",
       "Collaborated with clients to implement the requirements to capture content and design for page development efforts",
       "Taught Product Owner and QA in the team's process, usage of the content management system, and dealing with stakeholders. Supervised a growing team of nine Web Developers and one .NET developer",
-    ]
+    ],
   },
 ];
 
@@ -220,36 +222,40 @@ const GalleryThumbnails = () => {
         >
           <ModalH3>{currentContent.title}</ModalH3>
           <SwiperWrapper>
-            <SwiperContainer
-              effect={"coverflow"}
-              grabCursor={true}
-              centeredSlides={true}
-              lazy={true}
-              slidesPerView={3}
-              spaceBetween={30}
-              coverflowEffect={{
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-              }}
-              pagination={{
-                clickable: true,
-              }}
-              modules={[EffectCoverflow, Pagination]}
-            >
-              {currentContent.imagesForSlider.map((content) => (
-                <SwiperSlide>
-                  <ImgSwiper src={content} key={content} loading="lazy" />
-                </SwiperSlide>
-              ))}
-            </SwiperContainer>
+            {currentContent.imagesForSlider.length !== 0 && (
+              <SwiperContainer
+                effect={"coverflow"}
+                grabCursor={true}
+                centeredSlides={true}
+                lazy={true}
+                slidesPerView={3}
+                spaceBetween={30}
+                coverflowEffect={{
+                  rotate: 50,
+                  stretch: 0,
+                  depth: 100,
+                  modifier: 1,
+                  slideShadows: true,
+                }}
+                pagination={{
+                  clickable: true,
+                }}
+                modules={[EffectCoverflow, Pagination]}
+              >
+                {currentContent.imagesForSlider.map((content) => (
+                  <SwiperSlide>
+                    <ImgSwiper src={content} key={content} loading="lazy" />
+                  </SwiperSlide>
+                ))}
+              </SwiperContainer>
+            )}
             <SwiperContainerContent>
               <SwiperTextWrapper>{currentContent.text}</SwiperTextWrapper>
               <Ul>
                 {currentContent.bullets &&
-                  currentContent.bullets.map((bullet) => <Li key={bullet}>{bullet}</Li>)}
+                  currentContent.bullets.map((bullet) => (
+                    <Li key={bullet}>{bullet}</Li>
+                  ))}
               </Ul>
               {currentContent.link && (
                 <Link href={currentContent.link} target="_blank">

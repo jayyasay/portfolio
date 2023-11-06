@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import philippineFlag from "../assets/phi.png";
 import uaeFlag from "../assets/uae.png";
+import { motion } from "framer-motion";
 
 const FlexWrapper = styled.div`
   display: flex;
@@ -155,10 +156,34 @@ const Experiences = () => {
       ],
     },
   ];
+
+  const headerVariants = {
+    hidden: { x: -50, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.5 } },
+  };
+
+  const wrapperVariants = {
+    hidden: { x: -50, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.9 } },
+  };
   return (
     <>
+      <motion.h2
+        variants={headerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false }}
+      >
+        Experiences
+      </motion.h2>
       {myExperiences.map((countryData) => (
-        <div key={countryData.country}>
+        <motion.div
+          key={countryData.country}
+          variants={wrapperVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false }}
+        >
           <CountryWrapper>
             <FlexWrapper>
               <CountryHeader>
@@ -193,7 +218,7 @@ const Experiences = () => {
               ))}
             </FlexWrapper>
           </CountryWrapper>
-        </div>
+        </motion.div>
       ))}
     </>
   );

@@ -14,7 +14,6 @@ const Experience = () => {
     <>
       <ExperienceMainWrapper id="experiences">
         <GlobalStyle />
-        <h2>Experiences</h2>
         <Experiences />
       </ExperienceMainWrapper>
     </>

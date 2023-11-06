@@ -108,3 +108,14 @@ p,a  {
   height: 100%;
   object-fit: cover;
 }
+
+.progress-bar {
+  position: fixed;
+  top: 72.813px;
+  left: 0;
+  right: 0;
+  height: 5px;
+  z-index: 3;
+  background: #fff;
+  transform-origin: 0%;
+}

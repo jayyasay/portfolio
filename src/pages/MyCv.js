@@ -2,6 +2,7 @@ import styled from "styled-components";
 import GlobalStyle from "../components/GlobalStyle";
 import SamplePdf from "../components/SamplePdf";
 import { FiDownload } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -25,7 +26,7 @@ const ExperienceMainWrapper = styled.div`
   }
 `;
 
-const Download = styled.p`
+const Download = styled(motion.p)`
   transition: all 0.3s ease-in-out;
   padding: 10px;
   &:hover {
@@ -43,14 +44,32 @@ const downloadPDF = () => {
   link.click();
 };
 
+const headerVariants = {
+  hidden: { x: -50, opacity: 0 },
+  visible: { x: 0, opacity: 1, transition: { duration: 0.5 } },
+};
+
 const Experience = () => {
   return (
     <>
       <ExperienceMainWrapper id="mycv">
         <GlobalStyle />
         <HeaderWrapper>
-          <h2>View my CV</h2>
-          <Download onClick={() => downloadPDF()}>
+          <motion.h2
+            variants={headerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+          >
+            View my CV
+          </motion.h2>
+          <Download
+            variants={headerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            onClick={() => downloadPDF()}
+          >
             Download PDF <FiDownload />
           </Download>
         </HeaderWrapper>
