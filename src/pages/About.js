@@ -3,6 +3,7 @@ import styled from "styled-components";
 import jay from "../assets/jay.jpg";
 import GlobalStyle from "../components/GlobalStyle";
 import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 const H2 = styled(motion.h2)`
   text-align: center;
@@ -39,6 +40,35 @@ const InnerWrapper = styled(motion.div)`
   }
 `;
 
+const ScrollButton = styled(Link)`
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &.dark {
+    background-color: #2d3748;
+    color: white;
+
+    &:hover {
+      background-color: #1a202c;
+    }
+  }
+
+  &.light {
+    background-color: #f7fafc;
+    color: #2d3748;
+    border: 1px solid #e2e8f0;
+
+    &:hover {
+      background-color: #edf2f7;
+    }
+  }
+`;
+
 const TextWrapper = styled.div``;
 
 const headerVariants = {
@@ -51,13 +81,9 @@ const itemVariants = {
   visible: { x: 0, opacity: 1, transition: { duration: 0.9 } },
 };
 
-
 const About = React.forwardRef((props, ref) => {
   return (
-    <AboutWrapper
-      ref={ref}
-      id="about"
-    >
+    <AboutWrapper ref={ref} id="about">
       <GlobalStyle />
       <H2
         variants={headerVariants}
@@ -65,7 +91,7 @@ const About = React.forwardRef((props, ref) => {
         whileInView="visible"
         viewport={{ once: false }}
       >
-        Kamusta?
+        Frontend Developer (React/Next.js) + Shopify/WordPress Specialist
       </H2>
       <InnerWrapper
         variants={itemVariants}
@@ -76,20 +102,23 @@ const About = React.forwardRef((props, ref) => {
         <MyPhoto src={jay} alt="Jay" />
         <TextWrapper>
           <p>
-            Hey there! I'm Jay. I've been dabbling in web development for 13
-            years, and I've got some chops in Express/Serverless on the back-end
-            side too.
+            I build fast, conversion-focused eCommerce and marketing sites—theme
+            customization, UI systems, performance, analytics, and integrations.
           </p>
-          <p>
-            I rocked a 10-year stint at a big company doing web stuff and
-            teaming up with folks from all over the world.
-          </p>
-          <p>
-            Then, my family landed to Dubai for a fresh start and found a job to
-            jazz up a travel website.
-          </p>
-          <p>Scroll on to see my detailed experiences!</p>
-          <p>Got questions? Shoot me an email.</p>
+          <TextWrapper>
+            <InnerWrapper style={{ gap: "10px", marginTop: "20px" }}>
+              <ScrollButton
+                to="mycv"
+                smooth
+                spy
+                offset={-100}
+                duration={500}
+                className={props.theme === "dark" ? "dark" : "light"}
+              >
+                Download CV
+              </ScrollButton>
+            </InnerWrapper>
+          </TextWrapper>
         </TextWrapper>
       </InnerWrapper>
     </AboutWrapper>

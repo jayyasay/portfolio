@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import philippineFlag from "../assets/phi.png";
 import uaeFlag from "../assets/uae.png";
+import ausFlag from "../assets/aus.png";
 import { motion } from "framer-motion";
 
 const FlexWrapper = styled.div`
@@ -87,6 +88,36 @@ const Skill = styled.li`
 
 const Experiences = () => {
   const myExperiences = [
+    {
+      country: "Australia (Remote)",
+      flagAlt: "Australian Flag",
+      flagSrc: ausFlag,
+      date: "December 2024 - Present",
+      experiences: [
+        {
+          company: "Wellness Marketing",
+          position: "Web Developer / Consultant",
+          duration: "December 2024 - Present",
+          experience: [
+            "Managing and maintaining frontend of <a href='https://www.holiday-factory.com/' class='test' target='_blank'>Holiday Factory's website</a>, converting PSD/Figma designs to a mobile-responsive platform. Led the implementation of new products, <a href='https://holidayfactorypremium.com/' class='test' target='_blank'>Holiday Factory Premium</a> and <a href='https://holidayfactory.ge/book/home?lang=en' class='test' target='_blank'>Holiday Factory Georgia</a> websites from scratch. Successfully launched bank campaigns, public holiday promotions, and online voucher purchasing pages.",
+          ],
+          technology: [
+            "HTML",
+            "CSS",
+            "Grid",
+            "Flexbox",
+            "JavaScript",
+            "React",
+            "Fetch API",
+            "jQuery",
+            "Git / Github",
+            "Jira",
+            "Figma",
+            "Photoshop",
+          ],
+        },
+      ],
+    },
     {
       country: "United Arab Emirates",
       flagAlt: "Dubai Flag",

@@ -26,8 +26,8 @@ function App() {
       <motion.div style={{ scaleX: scrollYProgress }} className="progress-bar" />
       <Main>
         <About />
-        <Experience />
         <Gallery />
+        <Experience />
         <MyCv />
         <PoweredBy />
       </Main>

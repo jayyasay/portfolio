@@ -161,8 +161,8 @@ const Navigation = () => {
 
   const sections = [
     { id: "about", name: "About" },
-    { id: "experiences", name: "Experiences" },
     { id: "portfolio", name: "My Work" },
+    { id: "experiences", name: "Experiences" },
     {
       id: "mycv",
       name: "View my CV",
