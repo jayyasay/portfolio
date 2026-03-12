@@ -726,17 +726,6 @@ const PrimaryButton = styled(BaseButton)`
   }
 `;
 
-const SecondaryButton = styled(BaseButton)`
-  color: #111827;
-  background: #ffffff;
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
-
-  &:hover {
-    background: #f8fafc;
-  }
-`;
-
 const ContentSide = styled.div`
   display: grid;
   gap: 14px;
