@@ -6,6 +6,12 @@ import bookingEngine1 from "../assets/works/booking-engine1.webp";
 import bookingEngine2 from "../assets/works/booking-engine2.webp";
 import bookingEngine3 from "../assets/works/booking-engine3.webp";
 import bookingEngine4 from "../assets/works/booking-engine4.webp";
+import shopify1 from "../assets/works/shopify1.webp";
+import shopify2 from "../assets/works/shopify2.webp";
+import shopify3 from "../assets/works/shopify3.webp";
+import shopify4 from "../assets/works/shopify4.webp";
+import form1 from "../assets/works/form1.webp";
+import form2 from "../assets/works/form2.webp";
 
 const projects = [
   {
@@ -19,28 +25,60 @@ const projects = [
     tags: ["HTML", "CSS", "JavaScript", "jQuery", "Responsive UI"],
     images: [bookingEngine1, bookingEngine2, bookingEngine3, bookingEngine4],
     thumbnail: bookingEngine1,
-    liveLink: "#",
+    liveLink: "https://www.holiday-factory.com/crazydeals/smart-booking-engine",
     caseStudyLink: "#",
   },
   {
     id: 2,
     title: "Shopify Custom Sections System",
-    category: "Ecommerce / Theme Customization",
+    category: "Theme Customization",
     subtitle:
       "Reusable storefront sections designed for flexibility, cleaner UX, and easier client editing.",
     description:
       "Built configurable Shopify sections that let clients update content, layouts, and key visual elements without breaking consistency. Focused on balancing flexibility with maintainability.",
     tags: ["Shopify", "Liquid", "CSS", "JavaScript", "Theme System"],
-    images: [
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop",
-    ],
-    thumbnail:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1600&auto=format&fit=crop",
+    images: [shopify1, shopify2, shopify3, shopify4],
+    thumbnail: shopify1,
     liveLink: "#",
     caseStudyLink: "#",
   },
   {
     id: 3,
+    title: "Appointment Request with Email Confirmation",
+    category: "Full-Stack Form Workflow",
+    subtitle:
+      "Lightweight appointment request system with automated email confirmation.",
+    description:
+      "Built a simple appointment request website where users can submit booking details through a responsive form. The frontend is powered by Vite while a Node.js backend processes form submissions and sends automated confirmation emails to the user. The project demonstrates end-to-end form handling, backend integration, and transactional email automation for small business booking workflows.",
+    tags: ["Vite", "JavaScript", "Node.js", "Email API", "Form Handling"],
+    images: [form1, form2],
+    thumbnail: form1,
+    liveLink: "https://lokaldaddy.vercel.app",
+    caseStudyLink: "#",
+  },
+  {
+    id: 4,
+    title: "Valorant Map Mastery Quiz",
+    category: "Interactive Web Application",
+    subtitle:
+      "Dynamic quiz interface with scoring logic and serverless backend integration.",
+    description:
+      "Built an interactive quiz application that tests users' knowledge of Valorant maps. The frontend was developed using Vite for a fast and lightweight development environment, while a serverless function deployed on Vercel handles backend logic. The application guides users through a sequence of questions, tracks progress, calculates scores, and displays a final result screen based on performance.",
+    tags: [
+      "Vite",
+      "JavaScript",
+      "Serverless",
+      "Vercel",
+      "Interactive UI",
+      "Frontend Logic",
+    ],
+    images: [form1, form2],
+    thumbnail: form1,
+    liveLink: "https://valorant-quiz-frontend.vercel.app/",
+    caseStudyLink: "#",
+  },
+  {
+    id: 5,
     title: "WooCommerce Booking Logic",
     category: "WordPress / Booking UX",
     subtitle:
@@ -57,7 +95,7 @@ const projects = [
     caseStudyLink: "#",
   },
   {
-    id: 4,
+    id: 6,
     title: "Business Website UI Builds",
     category: "Marketing / Lead Generation",
     subtitle:
@@ -239,11 +277,17 @@ const MyWorkCarousel = () => {
                   ))}
                 </Tags>
 
-                <Buttons>
-                  <PrimaryButton href={activeProject.liveLink}>
-                    Live Preview
-                  </PrimaryButton>
-                </Buttons>
+                {activeProject.liveLink && activeProject.liveLink !== "#" && (
+                  <Buttons>
+                    <PrimaryButton
+                      href={activeProject.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Live Preview
+                    </PrimaryButton>
+                  </Buttons>
+                )}
               </ContentMain>
 
               <ContentSide>
