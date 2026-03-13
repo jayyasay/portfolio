@@ -95,18 +95,28 @@ const MyWorkCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const activeProject = useMemo(() => projects[activeIndex], [activeIndex]);
 
   const goPrev = () => {
+    if (isAnimating) return;
+
+    setIsAnimating(true);
     setActiveIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
   };
 
   const goNext = () => {
+    if (isAnimating) return;
+
+    setIsAnimating(true);
     setActiveIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1));
   };
 
   const goToSlide = (index) => {
+    if (isAnimating || index === activeIndex) return;
+
+    setIsAnimating(true);
     setActiveIndex(index);
   };
 
@@ -161,10 +171,18 @@ const MyWorkCarousel = () => {
               </PreviewMeta>
 
               <Controls>
-                <ArrowButton onClick={goPrev} aria-label="Previous project">
+                <ArrowButton
+                  onClick={goPrev}
+                  disabled={isAnimating}
+                  aria-label="Previous project"
+                >
                   ←
                 </ArrowButton>
-                <ArrowButton onClick={goNext} aria-label="Next project">
+                <ArrowButton
+                  onClick={goNext}
+                  disabled={isAnimating}
+                  aria-label="Next project"
+                >
                   →
                 </ArrowButton>
               </Controls>
@@ -179,6 +197,7 @@ const MyWorkCarousel = () => {
                   initial="initial"
                   animate="animate"
                   exit="exit"
+                  onAnimationComplete={() => setIsAnimating(false)}
                 >
                   <BrowserFrame onClick={() => openModal(0)}>
                     <BrowserTop>
@@ -251,9 +270,10 @@ const MyWorkCarousel = () => {
                 onClick={() => goToSlide(index)}
                 $active={index === activeIndex}
                 as={motion.button}
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={!isAnimating ? { y: -3 } : undefined}
+                whileTap={!isAnimating ? { scale: 0.98 } : undefined}
                 type="button"
+                disabled={isAnimating}
               >
                 <ThumbImageWrap>
                   <ThumbImage src={project.thumbnail} alt={project.title} />
@@ -506,6 +526,11 @@ const ArrowButton = styled.button`
     box-shadow:
       0 10px 24px rgba(15, 23, 42, 0.08),
       inset 0 0 0 1px rgba(15, 23, 42, 0.1);
+  }
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
   }
 `;
 
@@ -789,6 +814,11 @@ const ThumbCard = styled.button`
   text-align: left;
   transition: all 0.25s ease;
   min-width: 0;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
 `;
 
 const ThumbImageWrap = styled.div`
