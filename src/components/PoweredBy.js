@@ -141,62 +141,6 @@ const Inner = styled.div`
   padding: 0 20px;
 `;
 
-const Panel = styled.div`
-  position: relative;
-  overflow: hidden;
-  padding: 32px 20px;
-  border-radius: 32px;
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(59, 130, 246, 0.2),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at bottom right,
-      rgba(99, 102, 241, 0.18),
-      transparent 32%
-    ),
-    linear-gradient(135deg, #071120 0%, #0b1730 45%, #0f1e3d 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow:
-    0 20px 60px rgba(2, 6, 23, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-
-  @media screen and (min-width: 768px) {
-    padding: 42px 34px;
-    border-radius: 36px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    padding: 52px 44px;
-  }
-`;
-
-const GlowOne = styled.div`
-  position: absolute;
-  top: -70px;
-  left: -60px;
-  width: 220px;
-  height: 220px;
-  border-radius: 999px;
-  background: rgba(59, 130, 246, 0.18);
-  filter: blur(60px);
-  pointer-events: none;
-`;
-
-const GlowTwo = styled.div`
-  position: absolute;
-  right: -70px;
-  bottom: -90px;
-  width: 240px;
-  height: 240px;
-  border-radius: 999px;
-  background: rgba(99, 102, 241, 0.16);
-  filter: blur(70px);
-  pointer-events: none;
-`;
-
 const Intro = styled.div`
   position: relative;
   z-index: 1;
