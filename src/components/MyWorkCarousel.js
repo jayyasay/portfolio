@@ -12,6 +12,11 @@ import shopify3 from "../assets/works/shopify3.webp";
 import shopify4 from "../assets/works/shopify4.webp";
 import form1 from "../assets/works/form1.webp";
 import form2 from "../assets/works/form2.webp";
+import quiz1 from "../assets/works/quiz1.webp";
+import quiz2 from "../assets/works/quiz2.webp";
+import quiz3 from "../assets/works/quiz3.webp";
+import woocommerce1 from "../assets/works/woocommerce1.webp";
+import woocommerce2 from "../assets/works/woocommerce2.webp";
 
 const projects = [
   {
@@ -72,8 +77,8 @@ const projects = [
       "Interactive UI",
       "Frontend Logic",
     ],
-    images: [form1, form2],
-    thumbnail: form1,
+    images: [quiz1, quiz2, quiz3],
+    thumbnail: quiz1,
     liveLink: "https://valorant-quiz-frontend.vercel.app/",
     caseStudyLink: "#",
   },
@@ -86,12 +91,9 @@ const projects = [
     description:
       "Implemented frontend and platform-level behavior for booking-related products, including structured selection logic, quantity-related flows, and clearer presentation of pricing and participant options.",
     tags: ["WordPress", "WooCommerce", "PHP", "JavaScript", "UX"],
-    images: [
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop",
-    ],
-    thumbnail:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop",
-    liveLink: "#",
+    images: [woocommerce1, woocommerce2],
+    thumbnail: woocommerce1,
+    liveLink: "https://test.cricketcoaching.com.au/",
     caseStudyLink: "#",
   },
   {
