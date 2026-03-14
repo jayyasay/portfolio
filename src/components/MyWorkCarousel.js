@@ -148,6 +148,7 @@ const MyWorkCarousel = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImageIndex, setModalImageIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [shouldScrollToPreview, setShouldScrollToPreview] = useState(false);
 
   const activeProject = useMemo(() => projects[activeIndex], [activeIndex]);
 
@@ -168,6 +169,7 @@ const MyWorkCarousel = () => {
   const goToSlide = (index) => {
     if (isAnimating || index === activeIndex) return;
 
+    setShouldScrollToPreview(true);
     setIsAnimating(true);
     setActiveIndex(index);
   };
@@ -215,6 +217,27 @@ const MyWorkCarousel = () => {
     }
   }, [activeIndex]);
 
+  useEffect(() => {
+    if (!shouldScrollToPreview || !previewCardRef.current) return;
+
+    const timeout = setTimeout(() => {
+      const top =
+        previewCardRef.current.getBoundingClientRect().top +
+        window.pageYOffset -
+        110;
+
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
+
+      setShouldScrollToPreview(false);
+    }, 80);
+
+    return () => clearTimeout(timeout);
+  }, [activeIndex, shouldScrollToPreview]);
+
+  const previewCardRef = useRef(null);
   const railRef = useRef(null);
   const thumbRefs = useRef([]);
 
@@ -240,7 +263,7 @@ const MyWorkCarousel = () => {
         </Header>
 
         <CarouselShell>
-          <PreviewCard>
+          <PreviewCard ref={previewCardRef}>
             <PreviewTop>
               <PreviewMeta>
                 <MetaLabel>Currently Viewing</MetaLabel>
@@ -264,7 +287,6 @@ const MyWorkCarousel = () => {
                 </ArrowButton>
               </Controls>
             </PreviewTop>
-
             <PreviewViewport>
               <AnimatePresence mode="wait">
                 <Slide
@@ -301,7 +323,6 @@ const MyWorkCarousel = () => {
                 </Slide>
               </AnimatePresence>
             </PreviewViewport>
-
             <ContentRow>
               <ContentMain>
                 <ProjectTitle>{activeProject.title}</ProjectTitle>
