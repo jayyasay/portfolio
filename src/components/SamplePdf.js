@@ -66,7 +66,7 @@ export default function Test() {
     <>
       <RelativeBlock>
         <Document
-          file={`${process.env.PUBLIC_URL}/paolojayyasay_cv.pdf`}
+          file={`${process.env.PUBLIC_URL}/paolojayyasay_cv_2026.pdf`}
           //   file={myCV}
           onLoadSuccess={onDocumentLoadSuccess}
           loading="Loading CV..."

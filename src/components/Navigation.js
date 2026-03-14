@@ -1,234 +1,469 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
+import { NavLink as RouterLink } from "react-router-dom";
 import {
   AiOutlineFilePdf,
   AiFillGithub,
   AiFillLinkedin,
   AiFillFacebook,
   AiOutlineInstagram,
+  AiOutlineUser,
+  AiOutlineAppstore,
+  AiOutlineFundProjectionScreen,
+  AiOutlineDeploymentUnit
 } from "react-icons/ai";
 
-const Nav = styled.nav`
-  background-color: #23242c;
-  display: flex;
-  flex-direction: column;
+const sections = [
+  { id: "about", name: "About", icon: <AiOutlineUser /> },
+  {
+    id: "experiences",
+    name: "Experiences",
+    icon: <AiOutlineFundProjectionScreen />,
+  },
+  { id: "work", name: "My Work", icon: <AiOutlineAppstore /> },
+  { id: "mycv", name: "CV", icon: <AiOutlineFilePdf /> },
+];
+
+const socialMedia = [
+  {
+    name: "GitHub",
+    url: "https://github.com/jayyasay",
+    icon: <AiFillGithub />,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/jayyasay/",
+    icon: <AiFillLinkedin />,
+  },
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/jayyasay",
+    icon: <AiFillFacebook />,
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/jayyasay",
+    icon: <AiOutlineInstagram />,
+  },
+];
+
+/* -----------------------------
+  COMPONENT
+-------------------------------- */
+const Navigation = () => {
+  return (
+    <>
+      {/* Desktop Top Pill Nav */}
+      <TopNav>
+        <TopWrap>
+          <Brand>Paolo Jay Yasay</Brand>
+
+          <TopNavItems>
+            {sections.map((s) => (
+              <TopLink
+                key={s.id}
+                to={s.id}
+                smooth
+                spy
+                offset={-110}
+                duration={450}
+                activeClass="active"
+              >
+                {s.name}
+              </TopLink>
+            ))}
+            <SystemDesignLink to="/system-design">System Design</SystemDesignLink>
+          </TopNavItems>
+
+
+          <SocialIcons>
+            <SocialUL>
+              {socialMedia.map((social) => (
+                <li key={social.name}>
+                  <a
+                    href={social.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={social.name}
+                  >
+                    {social.icon}
+                  </a>
+                </li>
+              ))}
+            </SocialUL>
+          </SocialIcons>
+        </TopWrap>
+      </TopNav>
+
+      {/* Mobile Bottom Dock */}
+      <BottomDockSpacer />
+      <DockWrap>
+        <Dock role="navigation" aria-label="Primary">
+          {sections.map((s) => (
+            <DockLink
+              key={s.id}
+              to={s.id}
+              smooth
+              spy
+              offset={-90}
+              duration={450}
+              activeClass="active"
+            >
+              <DockIcon aria-hidden="true">{s.icon}</DockIcon>
+              <DockLabel>{s.name}</DockLabel>
+              <ActiveDot className="dot" aria-hidden="true" />
+            </DockLink>
+          ))}
+
+          <SystemDesignDockLink to="/system-design">
+            <DockIcon aria-hidden="true">
+              <AiOutlineDeploymentUnit />
+            </DockIcon>
+            <DockLabel>System</DockLabel>
+          </SystemDesignDockLink>
+        </Dock>
+      </DockWrap>
+    </>
+  );
+};
+
+export default Navigation;
+
+const DockIcon = styled.span`
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 18px;
+  background: transparent;
+  transition: background 160ms ease;
+`;
+
+const DockLabel = styled.span`
+  margin-top: 2px;
+  font-size: 10.5px;
+  line-height: 1;
+  letter-spacing: 0.2px;
+  opacity: 0.9;
+  color: currentColor;
+`;
+
+const TopNav = styled.nav`
   position: fixed;
-  top: 0;
   left: 0;
   right: 0;
-  margin: auto;
-  box-shadow: 0 3px 45px -20px #fff;
-  z-index: 2;
+  z-index: 50;
+  display: none;
 
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-  }
-`;
-
-const Wrapper = styled.div`
-  @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: row;
-    width: 1024px;
+  @media (min-width: 768px) {
+    display: block;
+    top: 14px;
     margin: auto;
   }
 `;
 
-const StyledLink = styled(Link)`
-  cursor: pointer;
+const TopWrap = styled.div`
+  max-width: 1300px;
+  margin: 0 auto;
+  height: 56px;
+  padding: 8px 10px;
+
   display: flex;
   align-items: center;
-  padding: 10px 20px;
-  color: white;
-  text-align: center;
+  gap: 16px;
+
+  border-radius: 32px;
+
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.7) inset;
+`;
+
+const Brand = styled.h1`
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e3a8a 45%, #0f172a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding: 0 10px;
+  white-space: nowrap;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+`;
+
+const TopNavItems = styled.div`
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+`;
+
+const TopLink = styled(ScrollLink)`
+  cursor: pointer;
   text-decoration: none;
+
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  background-color: ${({ isActive }) =>
-    isActive ? "#ddd" : "transparent"}; // Change colors as needed
-  transition: background-color 0.3s ease;
 
-  @media screen and (min-width: 768px) {
-    height: 100%;
-    padding: 0 20px;
-    &:hover {
-      background-color: #ddd;
-      color: black;
-    }
-  }
-`;
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
 
-const BurgerIcon = styled.span`
-  display: none;
-  @media screen and (max-width: 767px) {
-    display: block;
-    position: absolute;
-    right: 20px;
-    top: 24px;
-    cursor: pointer;
-    color: #fff;
-  }
-`;
+  border-radius: 999px;
+  padding: 10px 14px;
 
-const NavItems = styled.div`
-  @media screen and (max-width: 767px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-height: ${(props) => (props.open ? "100vh" : "0")};
-    transition: max-height 0.2s ease-in-out;
-    text-align: center;
-    height: calc(100vh - 72.81px);
-    background-color: #33363d;
-    position: absolute;
-    top: 72.81px;
-    left: 0;
-    overflow: hidden;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+
+  &:hover {
+    background: rgba(15, 23, 42, 0.05);
+    color: #111827;
   }
 
-  @media screen and (min-width: 768px) {
-    align-items: center;
-    margin: auto;
-    display: flex;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    justify-content: center;
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &.active {
+    background: #ffffff;
+    color: #111827;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
   }
 `;
 
 const SocialIcons = styled.div`
   margin-left: auto;
-  display: none;
-
-  @media screen and (min-width: 768px) {
-    display: flex;
-  }
+  display: flex;
 `;
 
 const SocialUL = styled.ul`
-  position: relative;
-  z-index: 2;
   display: flex;
-  flex-direction: row;
   list-style: none;
-  gap: 20px;
-  margin: auto;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
   align-items: center;
 
   & * {
-    color: #fff;
-    font-size: 1.5rem;
-  }
-
-  & li {
-    position: relative;
+    color: #4b5563;
+    font-size: 1.35rem;
   }
 
   & li a {
-    position: relative;
     display: flex;
-    transition: all 0.3s ease-in-out;
+    padding: 8px;
+    border-radius: 999px;
+    transition:
+      background 160ms ease,
+      transform 160ms ease,
+      color 160ms ease;
   }
 
-  & li a:after {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0); /* Center and hide */
-    z-index: -1;
-    content: "";
-    width: calc(100% + 24px); /* Adjust width as needed */
-    height: calc(100% + 24px); /* Adjust height as needed */
-    background-color: rgba(255, 255, 255, 0.1);
-    transition: transform 0.2s ease-in-out;
-    overflow: visible;
-    border-radius: 50%;
+  & li a:hover {
+    background: rgba(15, 23, 42, 0.05);
   }
 
-  & li a:hover:after {
-    transform: translate(-50%, -50%) scale(1); /* Expand to full size */
+  & li a:hover * {
+    color: #111827;
+  }
+
+  & li a:active {
+    transform: scale(0.98);
   }
 `;
 
-const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const BottomDockSpacer = styled.div`
+  display: none;
+  height: calc(84px + env(safe-area-inset-bottom));
 
-  const styleIcons = { marginLeft: "10px" };
+  @media (min-width: 768px) {
+    height: 0;
+  }
+`;
 
-  const sections = [
-    { id: "about", name: "About" },
-    { id: "experiences", name: "Experiences" },
-    { id: "portfolio", name: "My Work" },
-    {
-      id: "mycv",
-      name: "View my CV",
-      icon: <AiOutlineFilePdf style={styleIcons} />,
-    },
-  ];
+const DockWrap = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
 
-  const socialMedia = [
-    {
-      name: "GitHub",
-      url: "https://github.com/jayyasay",
-      icon: <AiFillGithub />,
-    },
-    {
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/jayyasay/",
-      icon: <AiFillLinkedin />,
-    },
-    {
-      name: "Facebook",
-      url: "https://www.facebook.com/jayyasay",
-      icon: <AiFillFacebook />,
-    },
-    {
-      name: "Instagram",
-      url: "https://www.instagram.com/jayyasay",
-      icon: <AiOutlineInstagram />,
-    },
-  ];
+  padding: 14px 14px calc(14px + env(safe-area-inset-bottom));
+  display: flex;
+  justify-content: center;
 
-  return (
-    <Nav>
-      <Wrapper>
-        <h1>Jay Yasay</h1>
-        <BurgerIcon onClick={() => setIsOpen(!isOpen)}>☰</BurgerIcon>
-        <NavItems open={isOpen}>
-          {sections.map((section) => (
-            <StyledLink
-              key={section.id}
-              activeClass="active"
-              smooth
-              spy
-              offset={-100}
-              to={section.id}
-              onClick={() => {
-                setIsOpen(!isOpen);
-              }}
-            >
-              {section.name} {section.icon && section.icon}
-            </StyledLink>
-          ))}
-        </NavItems>
-        <SocialIcons>
-          <SocialUL>
-            {socialMedia.map((social) => (
-              <li key={social.name}>
-                <a href={social.url} target="_blank" rel="noreferrer">
-                  {social.icon}
-                </a>
-              </li>
-            ))}
-          </SocialUL>
-        </SocialIcons>
-      </Wrapper>
-    </Nav>
-  );
-};
+  pointer-events: none;
 
-export default Navigation;
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const SystemDesignLink = styled(RouterLink)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    opacity 160ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 12px 24px rgba(15, 23, 42, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+`;
+
+const SystemDesignDockLink = styled(RouterLink)`
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+  text-decoration: none;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  box-shadow:
+    0 8px 18px rgba(15, 23, 42, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    opacity 160ms ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  ${DockIcon} {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  ${DockLabel} {
+    opacity: 1;
+  }
+`;
+
+const Dock = styled.div`
+  pointer-events: auto;
+
+  width: min(520px, calc(100vw - 28px));
+  height: 64px;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+
+  padding: 8px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.7) inset;
+`;
+
+const ActiveDot = styled.span`
+  position: absolute;
+  bottom: -6px;
+
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+
+  background: #111827;
+  box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.08);
+
+  opacity: 0;
+  transform: translateY(2px);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+`;
+
+const DockLink = styled(ScrollLink)`
+  position: relative;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+  text-decoration: none;
+
+  color: #6b7280;
+  transition:
+    background 160ms ease,
+    transform 160ms ease,
+    color 160ms ease;
+
+  &:hover {
+    background: rgba(15, 23, 42, 0.05);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &.active {
+    color: #111827;
+  }
+
+  &.active ${DockIcon} {
+    background: rgba(15, 23, 42, 0.06);
+  }
+
+  &.active ${ActiveDot} {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;

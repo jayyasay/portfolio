@@ -5,7 +5,6 @@ body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #23242c;
 }
 
 body * {
@@ -51,10 +50,6 @@ p,a  {
 
 .with-link a:after {
   content: " >"
-}
-
-#root {
-  padding: 0 20px;
 }
 
 #root .active {
@@ -111,7 +106,7 @@ p,a  {
 
 .progress-bar {
   position: fixed;
-  top: 72.813px;
+  top: 86.813px;
   left: 0;
   right: 0;
   height: 5px;
