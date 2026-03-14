@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link as ScrollLink } from "react-scroll";
+import { NavLink as RouterLink } from "react-router-dom";
 import {
   AiOutlineFilePdf,
   AiFillGithub,
@@ -10,11 +11,9 @@ import {
   AiOutlineUser,
   AiOutlineAppstore,
   AiOutlineFundProjectionScreen,
+  AiOutlineDeploymentUnit
 } from "react-icons/ai";
 
-/* -----------------------------
-  DATA
--------------------------------- */
 const sections = [
   { id: "about", name: "About", icon: <AiOutlineUser /> },
   {
@@ -74,7 +73,9 @@ const Navigation = () => {
                 {s.name}
               </TopLink>
             ))}
+            <SystemDesignLink to="/system-design">System Design</SystemDesignLink>
           </TopNavItems>
+
 
           <SocialIcons>
             <SocialUL>
@@ -114,6 +115,13 @@ const Navigation = () => {
               <ActiveDot className="dot" aria-hidden="true" />
             </DockLink>
           ))}
+
+          <SystemDesignDockLink to="/system-design">
+            <DockIcon aria-hidden="true">
+              <AiOutlineDeploymentUnit />
+            </DockIcon>
+            <DockLabel>System</DockLabel>
+          </SystemDesignDockLink>
         </Dock>
       </DockWrap>
     </>
@@ -122,9 +130,28 @@ const Navigation = () => {
 
 export default Navigation;
 
-/* -----------------------------
-  STYLES — Desktop top pill
--------------------------------- */
+const DockIcon = styled.span`
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 18px;
+  background: transparent;
+  transition: background 160ms ease;
+`;
+
+const DockLabel = styled.span`
+  margin-top: 2px;
+  font-size: 10.5px;
+  line-height: 1;
+  letter-spacing: 0.2px;
+  opacity: 0.9;
+  color: currentColor;
+`;
+
 const TopNav = styled.nav`
   position: fixed;
   left: 0;
@@ -172,7 +199,12 @@ const Brand = styled.h1`
   background-clip: text;
   padding: 0 10px;
   white-space: nowrap;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 `;
 
 const TopNavItems = styled.div`
@@ -288,6 +320,73 @@ const DockWrap = styled.div`
   }
 `;
 
+const SystemDesignLink = styled(RouterLink)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    opacity 160ms ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 12px 24px rgba(15, 23, 42, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+`;
+
+const SystemDesignDockLink = styled(RouterLink)`
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+  text-decoration: none;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+  box-shadow:
+    0 8px 18px rgba(15, 23, 42, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    opacity 160ms ease;
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  ${DockIcon} {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  ${DockLabel} {
+    opacity: 1;
+  }
+`;
+
 const Dock = styled.div`
   pointer-events: auto;
 
@@ -295,7 +394,7 @@ const Dock = styled.div`
   height: 64px;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 6px;
 
   padding: 8px;
@@ -311,31 +410,9 @@ const Dock = styled.div`
     0 1px 0 rgba(255, 255, 255, 0.7) inset;
 `;
 
-const DockIcon = styled.span`
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-
-  display: grid;
-  place-items: center;
-
-  font-size: 18px;
-  background: transparent;
-  transition: background 160ms ease;
-`;
-
-const DockLabel = styled.span`
-  margin-top: 2px;
-  font-size: 10.5px;
-  line-height: 1;
-  letter-spacing: 0.2px;
-  opacity: 0.9;
-  color: currentColor;
-`;
-
 const ActiveDot = styled.span`
   position: absolute;
-  bottom: 6px;
+  bottom: -6px;
 
   width: 4px;
   height: 4px;

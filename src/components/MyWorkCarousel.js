@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
@@ -17,6 +17,8 @@ import quiz2 from "../assets/works/quiz2.webp";
 import quiz3 from "../assets/works/quiz3.webp";
 import woocommerce1 from "../assets/works/woocommerce1.webp";
 import woocommerce2 from "../assets/works/woocommerce2.webp";
+import systemdesign1 from "../assets/works/system-design1.webp";
+import { Link } from "react-router-dom";
 
 const projects = [
   {
@@ -24,9 +26,11 @@ const projects = [
     title: "Holiday Factory Booking Experience",
     category: "Travel / Booking Platform",
     subtitle:
-      "Frontend work focused on clearer booking flow, responsive behavior, and conversion-led UI.",
+      "Frontend work improving the booking journey, responsive behavior, and overall usability.",
     description:
-      "Worked on frontend implementation and maintenance for a high-traffic travel platform, improving usability across booking steps and helping launch new frontend experiences across multiple products.",
+      "Worked on frontend implementation and ongoing maintenance for a high-traffic travel platform. Helped improve the booking steps, fix UI issues across devices, and support the launch of new travel deals and product experiences.",
+    focus:
+      "Booking flow improvements, responsive layout fixes, and frontend updates supporting new travel deals and booking features.",
     tags: ["HTML", "CSS", "JavaScript", "jQuery", "Responsive UI"],
     images: [bookingEngine1, bookingEngine2, bookingEngine3, bookingEngine4],
     thumbnail: bookingEngine1,
@@ -36,11 +40,13 @@ const projects = [
   {
     id: 2,
     title: "Shopify Custom Sections System",
-    category: "Theme Customization",
+    category: "Shopify / Theme Development",
     subtitle:
-      "Reusable storefront sections designed for flexibility, cleaner UX, and easier client editing.",
+      "Reusable storefront sections designed to keep layouts flexible while making content updates easy for clients.",
     description:
-      "Built configurable Shopify sections that let clients update content, layouts, and key visual elements without breaking consistency. Focused on balancing flexibility with maintainability.",
+      "Built configurable Shopify sections that allow clients to update text, images, and layouts directly in the theme editor without affecting the overall design. Focused on creating reusable components that keep the storefront consistent while staying easy to maintain.",
+    focus:
+      "Reusable Shopify sections, flexible layout options, and storefront components that clients can safely edit through the theme editor.",
     tags: ["Shopify", "Liquid", "CSS", "JavaScript", "Theme System"],
     images: [shopify1, shopify2, shopify3, shopify4],
     thumbnail: shopify1,
@@ -50,11 +56,13 @@ const projects = [
   {
     id: 3,
     title: "Appointment Request with Email Confirmation",
-    category: "Full-Stack Form Workflow",
+    category: "Custom Booking / Form System",
     subtitle:
-      "Lightweight appointment request system with automated email confirmation.",
+      "Simple appointment request flow with automated confirmation emails.",
     description:
-      "Built a simple appointment request website where users can submit booking details through a responsive form. The frontend is powered by Vite while a Node.js backend processes form submissions and sends automated confirmation emails to the user. The project demonstrates end-to-end form handling, backend integration, and transactional email automation for small business booking workflows.",
+      "Built a lightweight appointment request website where users can submit booking details through a responsive form. The frontend runs on Vite while a Node.js backend handles form submissions and sends confirmation emails automatically. Designed as a straightforward booking solution for small businesses.",
+    focus:
+      "Responsive booking form, Node.js form handling, and automated confirmation emails for appointment requests.",
     tags: ["Vite", "JavaScript", "Node.js", "Email API", "Form Handling"],
     images: [form1, form2],
     thumbnail: form1,
@@ -66,9 +74,20 @@ const projects = [
     title: "Valorant Map Mastery Quiz",
     category: "Interactive Web Application",
     subtitle:
-      "Dynamic quiz interface with scoring logic and serverless backend integration.",
+      "Interactive quiz that tests players’ knowledge of Valorant maps.",
     description:
-      "Built an interactive quiz application that tests users' knowledge of Valorant maps. The frontend was developed using Vite for a fast and lightweight development environment, while a serverless function deployed on Vercel handles backend logic. The application guides users through a sequence of questions, tracks progress, calculates scores, and displays a final result screen based on performance.",
+      "Built a browser-based quiz where users answer questions about Valorant maps and see their score at the end. The frontend was created with Vite and vanilla JavaScript for a fast, lightweight interface, while a serverless function on Vercel handles the backend logic. The app guides users through each question, tracks progress, calculates scores, and shows a final results screen.",
+    focus:
+      "Interactive quiz UI, frontend scoring logic, and serverless backend integration using Vercel functions.",
+    tags: [
+      "Vite",
+      "JavaScript",
+      "Serverless",
+      "Vercel",
+      "Interactive UI",
+      "Frontend Logic",
+    ],
+    liveLabel: "Live Preview",
     tags: [
       "Vite",
       "JavaScript",
@@ -87,9 +106,11 @@ const projects = [
     title: "WooCommerce Booking Logic",
     category: "WordPress / Booking UX",
     subtitle:
-      "Custom product and booking interactions for more structured and user-friendly flows.",
+      "Custom booking product behavior to make participant selection and pricing easier to manage.",
     description:
-      "Implemented frontend and platform-level behavior for booking-related products, including structured selection logic, quantity-related flows, and clearer presentation of pricing and participant options.",
+      "Implemented custom booking interactions for WooCommerce products, including participant selection, quantity syncing, and clearer pricing display. Focused on making the booking process easier for users while keeping the product setup manageable for administrators.",
+    focus:
+      "Participant selection logic, quantity syncing, and pricing behavior for booking-based WooCommerce products.",
     tags: ["WordPress", "WooCommerce", "PHP", "JavaScript", "UX"],
     images: [woocommerce1, woocommerce2],
     thumbnail: woocommerce1,
@@ -98,20 +119,19 @@ const projects = [
   },
   {
     id: 6,
-    title: "Business Website UI Builds",
-    category: "Marketing / Lead Generation",
+    title: "System Design Experiments",
+    category: "Frontend Architecture",
     subtitle:
-      "Responsive client websites designed for trust, clarity, and stronger conversion flow.",
+      "Small interactive demos exploring how scalable UI systems can be structured.",
     description:
-      "Delivered polished business-facing websites with attention to visual hierarchy, responsive behavior, and editable content structures for real-world client use.",
-    tags: ["React", "WordPress", "Styled Components", "UI/UX"],
-    images: [
-      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1600&auto=format&fit=crop",
-    ],
-    thumbnail:
-      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1600&auto=format&fit=crop",
-    liveLink: "#",
-    caseStudyLink: "#",
+      "A collection of frontend experiments focused on reusable components and UI structure. These demos explore how larger interfaces can be organized and scaled while keeping the codebase simple and maintainable.",
+    focus:
+      "Reusable components, UI structure, and frontend patterns for building scalable interfaces.",
+    tags: ["React", "Component Systems", "Architecture", "UI Patterns"],
+    images: [systemdesign1],
+    thumbnail: systemdesign1,
+    liveLink: null,
+    caseStudyLink: "/system-design",
   },
 ];
 
@@ -180,6 +200,31 @@ const MyWorkCarousel = () => {
       prev === activeProject.images.length - 1 ? 0 : prev + 1,
     );
   };
+
+  useEffect(() => {
+    const rail = railRef.current;
+    const activeThumb = thumbRefs.current[activeIndex];
+
+    if (!rail || !activeThumb) return;
+
+    const railRect = rail.getBoundingClientRect();
+    const thumbRect = activeThumb.getBoundingClientRect();
+
+    if (thumbRect.left < railRect.left) {
+      rail.scrollBy({
+        left: thumbRect.left - railRect.left - 12,
+        behavior: "smooth",
+      });
+    } else if (thumbRect.right > railRect.right) {
+      rail.scrollBy({
+        left: thumbRect.right - railRect.right + 12,
+        behavior: "smooth",
+      });
+    }
+  }, [activeIndex]);
+
+  const railRef = useRef(null);
+  const thumbRefs = useRef([]);
 
   return (
     <Section id="work">
@@ -290,6 +335,13 @@ const MyWorkCarousel = () => {
                     </PrimaryButton>
                   </Buttons>
                 )}
+
+                {activeProject.caseStudyLink &&
+                  activeProject.caseStudyLink !== "#" && (
+                    <CaseStudyButton as={Link} to={activeProject.caseStudyLink}>
+                      Go to System Design
+                    </CaseStudyButton>
+                  )}
               </ContentMain>
 
               <ContentSide>
@@ -298,21 +350,21 @@ const MyWorkCarousel = () => {
                   <SideValue>{activeProject.category}</SideValue>
                 </SideCard>
 
-                <SideCard>
-                  <SideLabel>Focus</SideLabel>
-                  <SideValue>
-                    UX clarity, responsive implementation, and maintainable
-                    frontend structure.
-                  </SideValue>
-                </SideCard>
+                {activeProject.focus && activeProject.focus.length > 0 && (
+                  <SideCard>
+                    <SideLabel>Focus</SideLabel>
+                    <SideValue>{activeProject.focus}</SideValue>
+                  </SideCard>
+                )}
               </ContentSide>
             </ContentRow>
           </PreviewCard>
 
-          <ThumbRail>
+          <ThumbRail ref={railRef}>
             {projects.map((project, index) => (
               <ThumbCard
                 key={project.id}
+                ref={(el) => (thumbRefs.current[index] = el)}
                 onClick={() => goToSlide(index)}
                 $active={index === activeIndex}
                 as={motion.button}
@@ -787,6 +839,16 @@ const BaseButton = styled.a`
   }
 `;
 
+const CaseStudyButton = styled(BaseButton)`
+  background: #1e3a8a;
+  color: #fff;
+  box-shadow: 0 10px 20px rgba(30, 58, 138, 0.25);
+
+  &:hover {
+    background: #1a2f70;
+  }
+`;
+
 const PrimaryButton = styled(BaseButton)`
   color: #ffffff;
   background: #111827;
@@ -825,24 +887,41 @@ const SideValue = styled.div`
 `;
 
 const ThumbRail = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
   gap: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 2px 8px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 
-  @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(15, 23, 42, 0.18) transparent;
+
+  &::-webkit-scrollbar {
+    height: 8px;
   }
 
-  @media screen and (min-width: 1100px) {
-    grid-template-columns: repeat(4, 1fr);
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.18);
+    border-radius: 999px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(15, 23, 42, 0.28);
   }
 `;
 
 const ThumbCard = styled.button`
+  flex: 0 0 280px;
   display: flex;
   align-items: center;
   gap: 14px;
-  width: 100%;
+  width: 280px;
   padding: 12px;
   border-radius: 22px;
   border: 1px solid
@@ -864,6 +943,11 @@ const ThumbCard = styled.button`
   &:disabled {
     cursor: not-allowed;
     opacity: 0.8;
+  }
+
+  @media screen and (min-width: 768px) {
+    flex: 0 0 320px;
+    width: 320px;
   }
 `;
 

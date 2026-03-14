@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
-import jay from "../assets/jay.jpg";
+import jay from "../assets/jay2.webp";
 
 const Section = styled.section`
   padding: 0 20px;
@@ -312,23 +312,23 @@ const About = React.forwardRef(({ theme }, ref) => {
               <Eyebrow theme={theme}>About Me</Eyebrow>
               <Title variants={itemVariants} theme={theme}>
                 <Accent theme={theme}>
-                  Frontend Developer building clean, fast web experiences.
+                  Frontend Developer focused on clean, fast, practical web interfaces.
                 </Accent>
               </Title>
 
               <Description variants={itemVariants} theme={theme}>
-                I specialize in React, Next.js, Shopify, and WordPress. Creating
-                modern interfaces, scalable UI systems, and high-performing
-                marketing or eCommerce websites that are easy to use and built
-                to convert.
+                I specialize in React, Next.js, Shopify, and WordPress. I build
+                modern interfaces, scalable UI systems, and marketing or
+                eCommerce websites that are easy to use and built for real
+                users.
               </Description>
 
               <MetaRow variants={itemVariants}>
                 <MetaPill theme={theme}>React / Next.js</MetaPill>
-                <MetaPill theme={theme}>Shopify</MetaPill>
-                <MetaPill theme={theme}>WordPress</MetaPill>
-                <MetaPill theme={theme}>UI Systems</MetaPill>
-                <MetaPill theme={theme}>Performance</MetaPill>
+                <MetaPill theme={theme}>Shopify Development</MetaPill>
+                <MetaPill theme={theme}>WordPress / WooCommerce</MetaPill>
+                <MetaPill theme={theme}>Booking & eCommerce UX</MetaPill>
+                <MetaPill theme={theme}>Frontend Architecture</MetaPill>
               </MetaRow>
 
               <Actions variants={itemVariants}>
