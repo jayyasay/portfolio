@@ -9,6 +9,7 @@ import { pdfjs } from "react-pdf";
 import workerSrc from "pdfjs-dist/build/pdf.worker.min.js";
 import PoweredBy from "./components/PoweredBy";
 import MyWorkCarousel from "./components/MyWorkCarousel";
+import SectionTracker from "./components/SectionTracker";
 pdfjs.GlobalWorkerOptions.workerSrc = workerSrc;
 
 const Main = styled.main`
@@ -23,9 +24,26 @@ function App() {
       <Navigation />
       <Main>
         <About />
-        <Experience />
-        <MyWorkCarousel />
-        <MyCv />
+        <SectionTracker
+          eventName="experience_view"
+          eventParams={{ section_name: "Experience" }}
+        >
+          <Experience />
+        </SectionTracker>
+
+        <SectionTracker
+          eventName="mywork_view"
+          eventParams={{ section_name: "My Work" }}
+        >
+          <MyWorkCarousel />
+        </SectionTracker>
+
+        <SectionTracker
+          eventName="cv_view"
+          eventParams={{ section_name: "CV" }}
+        >
+          <MyCv />
+        </SectionTracker>
         <PoweredBy />
       </Main>
       <Analytics />
