@@ -4,31 +4,41 @@ import { trackEvent } from "../analytics";
 export default function SectionTracker({
   eventName,
   eventParams = {},
-  threshold = 0.5,
   children,
 }) {
-  const ref = useRef(null);
+  const markerRef = useRef(null);
+  const hasTracked = useRef(false);
 
   useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    let hasTracked = false;
+    const marker = markerRef.current;
+    if (!marker) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasTracked) {
+        if (entry.isIntersecting && !hasTracked.current) {
           trackEvent(eventName, eventParams);
-          hasTracked = true;
+          hasTracked.current = true;
         }
       },
-      { threshold },
+      {
+        threshold: 0,
+        rootMargin: "0px 0px -60% 0px",
+      },
     );
 
-    observer.observe(element);
+    observer.observe(marker);
 
     return () => observer.disconnect();
-  }, [eventName, eventParams, threshold]);
+  }, [eventName, eventParams]);
 
-  return <div ref={ref}>{children}</div>;
+  return (
+    <div>
+      <div
+        ref={markerRef}
+        style={{ position: "relative", width: "100%", height: "1px" }}
+        aria-hidden="true"
+      />
+      {children}
+    </div>
+  );
 }

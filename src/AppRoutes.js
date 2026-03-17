@@ -11,7 +11,7 @@ function AppRoutes() {
       
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/system-design" element={<SystemDesign />} />
+        <Route path="/design-system" element={<SystemDesign />} />
       </Routes>
     </>
   );
