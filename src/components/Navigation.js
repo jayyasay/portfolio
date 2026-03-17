@@ -57,7 +57,7 @@ const Navigation = () => {
       {/* Desktop Top Pill Nav */}
       <TopNav>
         <TopWrap>
-          <Brand>Paolo Jay Yasay</Brand>
+          <Brand>Jay Yasay</Brand>
 
           <TopNavItems>
             {sections.map((s) => (
