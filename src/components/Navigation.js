@@ -73,7 +73,7 @@ const Navigation = () => {
                 {s.name}
               </TopLink>
             ))}
-            <SystemDesignLink to="/system-design">System Design</SystemDesignLink>
+            <SystemDesignLink to="/design-system">Design System</SystemDesignLink>
           </TopNavItems>
 
 
