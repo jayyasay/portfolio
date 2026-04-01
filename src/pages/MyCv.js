@@ -237,9 +237,7 @@ const Experience = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
             >
-              A concise snapshot of my experience across frontend development,
-              ecommerce builds, UI implementation, and real-world client work.
-              Preview it here or download the full PDF version.
+              A quick snapshot of my front-end work across React UI builds, e-commerce (WordPress/Shopify), and full-stack features like Supabase CRUD and Stripe integration. Preview it here or download the full PDF.
             </Description>
 
             <MetaRow
@@ -248,8 +246,8 @@ const Experience = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
             >
-              <MetaPill>15+ Years Experience</MetaPill>
-              <MetaPill>Frontend / UI</MetaPill>
+              <MetaPill>10+ Years Experience</MetaPill>
+              <MetaPill>Front-End / UI (Full-Stack Exposure)</MetaPill>
               <MetaPill>React / WordPress / Shopify</MetaPill>
             </MetaRow>
 
