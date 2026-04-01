@@ -317,18 +317,15 @@ const About = React.forwardRef(({ theme }, ref) => {
               </Title>
 
               <Description variants={itemVariants} theme={theme}>
-                I specialize in React, Next.js, Shopify, and WordPress. I build
-                modern interfaces, scalable UI systems, and marketing or
-                eCommerce websites that are easy to use and built for real
-                users.
+                I build responsive UI with React, plus e-commerce experiences on Shopify and WordPress. When needed, I support end-to-end delivery with full-stack exposure like Supabase CRUD and Stripe integrations.
               </Description>
 
               <MetaRow variants={itemVariants}>
-                <MetaPill theme={theme}>React / Next.js</MetaPill>
-                <MetaPill theme={theme}>Shopify Development</MetaPill>
-                <MetaPill theme={theme}>WordPress / WooCommerce</MetaPill>
-                <MetaPill theme={theme}>Booking & eCommerce UX</MetaPill>
-                <MetaPill theme={theme}>Frontend Architecture</MetaPill>
+                <MetaPill theme={theme}>React / UI Systems</MetaPill>
+                <MetaPill theme={theme}>Shopify Themes / Liquid</MetaPill>
+                <MetaPill theme={theme}>WordPress / Elementor</MetaPill>
+                <MetaPill theme={theme}>Supabase CRUD</MetaPill>
+                <MetaPill theme={theme}>Performance & UX</MetaPill>
               </MetaRow>
 
               <Actions variants={itemVariants}>
