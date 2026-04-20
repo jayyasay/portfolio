@@ -312,20 +312,28 @@ const About = React.forwardRef(({ theme }, ref) => {
               <Eyebrow theme={theme}>About Me</Eyebrow>
               <Title variants={itemVariants} theme={theme}>
                 <Accent theme={theme}>
-                  Frontend Developer focused on clean, fast, practical web interfaces.
+                  I build clean frontend with full-stack exposure for product interfaces.
                 </Accent>
               </Title>
 
               <Description variants={itemVariants} theme={theme}>
-                I build responsive UI with React, plus e-commerce experiences on Shopify and WordPress. When needed, I support end-to-end delivery with full-stack exposure like Supabase CRUD and Stripe integrations.
+                Most of my work is on React UI and product experiences that need
+                to stay clear, practical, and easy to use. I've built dashboards,
+                admin tools, inventory systems, booking flows, and other web apps
+                that need solid frontend structure, with full-stack exposure when
+                the project goes beyond frontend.
               </Description>
 
               <MetaRow variants={itemVariants}>
-                <MetaPill theme={theme}>React / UI Systems</MetaPill>
-                <MetaPill theme={theme}>Shopify Themes / Liquid</MetaPill>
-                <MetaPill theme={theme}>WordPress / Elementor</MetaPill>
-                <MetaPill theme={theme}>Supabase CRUD</MetaPill>
-                <MetaPill theme={theme}>Performance & UX</MetaPill>
+                <MetaPill theme={theme}>React</MetaPill>
+                <MetaPill theme={theme}>Next.js</MetaPill>
+                <MetaPill theme={theme}>JavaScript</MetaPill>
+                <MetaPill theme={theme}>HTML / CSS</MetaPill>
+                <MetaPill theme={theme}>Shopify</MetaPill>
+                <MetaPill theme={theme}>WordPress</MetaPill>
+                <MetaPill theme={theme}>Supabase</MetaPill>
+                <MetaPill theme={theme}>NeonDB</MetaPill>
+                <MetaPill theme={theme}>Node.js</MetaPill>
               </MetaRow>
 
               <Actions variants={itemVariants}>

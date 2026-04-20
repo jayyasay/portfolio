@@ -6,8 +6,6 @@ import {
   AiOutlineFilePdf,
   AiFillGithub,
   AiFillLinkedin,
-  AiFillFacebook,
-  AiOutlineInstagram,
   AiOutlineUser,
   AiOutlineAppstore,
   AiOutlineFundProjectionScreen,
@@ -16,12 +14,12 @@ import {
 
 const sections = [
   { id: "about", name: "About", icon: <AiOutlineUser /> },
+  { id: "work", name: "My Work", icon: <AiOutlineAppstore /> },
   {
     id: "experiences",
     name: "Experiences",
     icon: <AiOutlineFundProjectionScreen />,
   },
-  { id: "work", name: "My Work", icon: <AiOutlineAppstore /> },
   { id: "mycv", name: "CV", icon: <AiOutlineFilePdf /> },
 ];
 
@@ -35,17 +33,7 @@ const socialMedia = [
     name: "LinkedIn",
     url: "https://www.linkedin.com/in/jayyasay/",
     icon: <AiFillLinkedin />,
-  },
-  {
-    name: "Facebook",
-    url: "https://www.facebook.com/jayyasay",
-    icon: <AiFillFacebook />,
-  },
-  {
-    name: "Instagram",
-    url: "https://www.instagram.com/jayyasay",
-    icon: <AiOutlineInstagram />,
-  },
+  }
 ];
 
 /* -----------------------------
