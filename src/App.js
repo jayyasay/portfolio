@@ -24,18 +24,19 @@ function App() {
       <Navigation />
       <Main>
         <About />
-        <SectionTracker
-          eventName="experience_view"
-          eventParams={{ section_name: "Experience" }}
-        >
-          <Experience />
-        </SectionTracker>
 
         <SectionTracker
           eventName="mywork_view"
           eventParams={{ section_name: "My Work" }}
         >
           <MyWorkCarousel />
+        </SectionTracker>
+        
+        <SectionTracker
+          eventName="experience_view"
+          eventParams={{ section_name: "Experience" }}
+        >
+          <Experience />
         </SectionTracker>
 
         <SectionTracker

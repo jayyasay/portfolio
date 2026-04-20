@@ -18,9 +18,59 @@ import quiz3 from "../assets/works/quiz3.webp";
 import woocommerce1 from "../assets/works/woocommerce1.webp";
 import woocommerce2 from "../assets/works/woocommerce2.webp";
 import systemdesign1 from "../assets/works/system-design1.webp";
+import bantayfreshshowcase from "../assets/works/BantayFresh-Showcase.png";
+import bantayfresh1 from "../assets/works/bantayfresh1.png";
+import bantayfresh2 from "../assets/works/bantayfresh2.png";
+import bantayfresh3 from "../assets/works/bantayfresh3.webp";
+import bantayfresh4 from "../assets/works/bantayfresh4.webp";
+import bantayfresh5 from "../assets/works/bantayfresh5.webp";
+import bantayfresh6 from "../assets/works/bantayfresh6.webp";
+import ligacarolinashowcase from "../assets/works/ligacarolina-showcase.png";
+import ligacarolina1 from "../assets/works/ligacarolina1.webp";
+import ligacarolina2 from "../assets/works/ligacarolina2.webp";
+import ligacarolina3 from "../assets/works/ligacarolina3.webp";
+import ligacarolina4 from "../assets/works/ligacarolina4.webp";
+import ligacarolina5 from "../assets/works/ligacarolina5.webp";
+import ligacarolina6 from "../assets/works/ligacarolina6.webp";
+import ligacarolina7 from "../assets/works/ligacarolina7.webp";
+import ligacarolina8 from "../assets/works/ligacarolina8.webp";
+import ligacarolina9 from "../assets/works/ligacarolina9.webp";
+import ligacarolina10 from "../assets/works/ligacarolina10.webp";
 import { Link } from "react-router-dom";
 
 const projects = [
+  {
+    id: 7,
+    title: "BantayFresh",
+    category: "Monitoring Dashboard",
+    subtitle:
+      "Freshness monitoring dashboard concept built for fast daily status checks.",
+    description:
+      "Built BantayFresh with a React Native mobile app and a companion web app built using Vite.js, with Supabase powering the backend services. Focused on clear monitoring workflows, fast status visibility, and a responsive experience across platforms.",
+    focus:
+      "Status visibility, dashboard readability, and responsive monitoring views.",
+    tags: ["React Native", "Vite.js", "Supabase", "Monitoring"],
+    images: [bantayfresh1, bantayfresh2, bantayfresh3, bantayfresh4, bantayfresh5, bantayfresh6],
+    thumbnail: bantayfreshshowcase,
+    liveLink: "https://bantayfresh-web.vercel.app/",
+    caseStudyLink: "#",
+  },
+  {
+    id: 8,
+    title: "Basketball League Stats",
+    category: "Sports Analytics",
+    subtitle:
+      "League management and stats platform with admin tools for core operations.",
+    description:
+      "Built with Next.js and NeonDB as the backend, this project includes a simple admin login auth to manage matches, create teams, and add players. The current scope is intentionally lightweight and structured to be expanded later with more league features.",
+    focus:
+      "Admin-first league management, core stats workflows, and an expandable architecture.",
+    tags: ["Next.js", "NeonDB", "Admin Auth", "Sports Management"],
+    images: [ligacarolina1, ligacarolina2, ligacarolina3, ligacarolina4, ligacarolina5, ligacarolina6, ligacarolina7, ligacarolina8, ligacarolina9, ligacarolina10],
+    thumbnail: ligacarolinashowcase,
+    liveLink: "https://liga-carolina-2026.vercel.app/",
+    caseStudyLink: "#",
+  },
   {
     id: 1,
     title: "Holiday Factory Booking Experience",
