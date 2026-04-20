@@ -6,8 +6,6 @@ import {
   AiOutlineFilePdf,
   AiFillGithub,
   AiFillLinkedin,
-  AiFillFacebook,
-  AiOutlineInstagram,
   AiOutlineUser,
   AiOutlineAppstore,
   AiOutlineFundProjectionScreen,
