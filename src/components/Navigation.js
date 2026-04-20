@@ -104,7 +104,7 @@ const Navigation = () => {
             </DockLink>
           ))}
 
-          <SystemDesignDockLink to="/system-design">
+          <SystemDesignDockLink to="/design-system">
             <DockIcon aria-hidden="true">
               <AiOutlineDeploymentUnit />
             </DockIcon>
